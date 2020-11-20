@@ -1,11 +1,11 @@
 pipeline {
     environment {
-        registry = "gnschenker/jenkins-docker-test"
+        registry = "ins1234/jenkins-docker-test"
         DOCKER_PWD = credentials('docker-login-pwd')
     }
     agent {
         docker {
-            image 'gnschenker/jenkins-node-docker'
+            image 'gnschenker/jenkins-node-sample'
             // args '-p 3000:3000'
             // args '-w /app'
             args '-v /var/run/docker.sock:/var/run/docker.sock'
