@@ -27,10 +27,10 @@ pipeline {
         }
         stage("Build & Push Docker image") {
             steps {
-                sh 'docker image build -t $registry:$BUILD_NUMBER .'
-                sh 'docker login -u gnschenker -p $DOCKER_PWD'
-                sh 'docker image push $registry:$BUILD_NUMBER'
-                sh "docker image rm $registry:$BUILD_NUMBER"
+                sh echo 'docker image build -t $registry:$BUILD_NUMBER .'
+                sh echo 'docker login -u gnschenker -p $DOCKER_PWD'
+                sh echo 'docker image push $registry:$BUILD_NUMBER'
+                sh echo "docker image rm $registry:$BUILD_NUMBER"
             }
         }
         stage('Deploy and smoke test') {
