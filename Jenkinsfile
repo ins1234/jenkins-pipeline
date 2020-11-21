@@ -42,7 +42,7 @@ pipeline {
         }
         stage('Cleanup') {
             steps{
-			    sh 'sudo docker run hello-world'
+			    sh 'docker run hello-world'
                 sh "echo 'Cleanup'" //'./jenkins/scripts/cleanup.sh'
             }
         }
