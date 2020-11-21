@@ -27,7 +27,7 @@ pipeline {
         }
         stage("Build & Push Docker image") {
             steps {
-				sh echo 'Build & Push Docker image' 
+				sh "echo 'Build & Push Docker image'"
                 //sh 'docker image build -t $registry:$BUILD_NUMBER .'
                 //sh 'docker login -u gnschenker -p $DOCKER_PWD'
                 //sh 'docker image push $registry:$BUILD_NUMBER'
@@ -36,12 +36,12 @@ pipeline {
         }
         stage('Deploy and smoke test') {
             steps{
-                sh echo 'Deploy and smoke test' //'./jenkins/scripts/deploy.sh'
+                sh "echo 'Deploy and smoke test'" //'./jenkins/scripts/deploy.sh'
             }
         }
         stage('Cleanup') {
             steps{
-                sh echo 'Cleanup' //'./jenkins/scripts/cleanup.sh'
+                sh "echo 'Cleanup'" //'./jenkins/scripts/cleanup.sh'
             }
         }
     }
