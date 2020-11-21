@@ -41,11 +41,15 @@ pipeline {
             }
         }
         stage('Cleanup') {
-		    agent {
-					docker { image 'docker' }
-			}
-            steps{			  
-			    sh 'docker run hello-world'
+            steps{			
+                 docker.image('centos:7').inside("--link ${c.id}:db") {
+				/*
+				 * Run some tests which require MySQL, and assume that it is
+				 * available on the host name `db`
+				 */
+				sh 'make check'
+			}			
+			    //sh 'docker run hello-world'
                 sh "echo 'Cleanup123'" //'./jenkins/scripts/cleanup.sh'
             }
         }
