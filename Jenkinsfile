@@ -4,6 +4,9 @@ pipeline {
         DOCKER_PWD = "pass12345" //credentials('docker-login-pwd')
 		PATH = "/bin:/usr/bin:$PATH"
     }
+	agent {
+	  any
+	}
     /*agent {
         docker {
             image 'gnschenker/jenkins-node-sample'
