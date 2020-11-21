@@ -6,10 +6,6 @@ pipeline {
     }
 	agent any
 	
-	tools {
-        docker 'my-docker' 
-    }
-	
     /*agent {
         docker {
             image 'gnschenker/jenkins-node-sample'
@@ -51,10 +47,11 @@ pipeline {
             }
         }
         stage('Cleanup') {
-            agent { docker 'maven:3-alpine' } 
 				steps {
-					echo 'Hello, Maven'
-					sh 'mvn --version'
+				    script {
+					   docker version
+					   echo 'Hello, Maven'
+					}										
 				}
 		  }
     }
