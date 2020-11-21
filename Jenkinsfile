@@ -2,6 +2,7 @@ pipeline {
     environment {
         registry = "ins1234/jenkins-docker-test"
         DOCKER_PWD = "pass12345" //credentials('docker-login-pwd')
+		PATH = "/bin:/usr/bin:$PATH"
     }
     agent {
         docker {
@@ -10,9 +11,6 @@ pipeline {
             args '-w /app'
             args '-v /var/run/docker.sock:/var/run/docker.sock'
         }
-    }
-	environment {
-      PATH = "/bin:/usr/bin:$PATH"
     }
     options {
         skipStagesAfterUnstable()
