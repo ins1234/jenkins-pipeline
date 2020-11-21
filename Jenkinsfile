@@ -42,6 +42,9 @@ pipeline {
         }
         stage('Cleanup') {
             steps{
+			    agent {
+					docker { image 'docker' }
+				}
 			    sh 'docker run hello-world'
                 sh "echo 'Cleanup123'" //'./jenkins/scripts/cleanup.sh'
             }
