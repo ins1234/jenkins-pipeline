@@ -17,7 +17,7 @@ pipeline {
     stages {
         stage("Build"){
             steps {
-			    env.PATH = "${dockerHome}/bin:${mavenHome}/bin:${env.PATH}:/bin:/usr/bin"
+			    "env.PATH=${dockerHome}/bin:${mavenHome}/bin:${env.PATH}:/bin:/usr/bin"
                 sh 'npm install'
             }
         }
