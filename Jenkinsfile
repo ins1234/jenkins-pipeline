@@ -4,14 +4,14 @@ pipeline {
         DOCKER_PWD = "pass12345" //credentials('docker-login-pwd')
 		PATH = "/bin:/usr/bin:$PATH"
     }
-    agent {
+    /*agent {
         docker {
             image 'gnschenker/jenkins-node-sample'
             args '-p 3000:3000'
             args '-w /app'
             args '-v /var/run/docker.sock:/var/run/docker.sock'
         }
-    }
+    }*/
     options {
         skipStagesAfterUnstable()
     }
@@ -41,12 +41,11 @@ pipeline {
             }
         }
         stage('Cleanup') {
-             agent {
-                docker { image 'node' }
-            }
-            steps {
-                sh 'node --version'
-            }
-        }
+            agent { docker 'maven:3-alpine' } 
+				steps {
+					echo 'Hello, Maven'
+					sh 'mvn --version'
+				}
+		  }
     }
 }
