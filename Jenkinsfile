@@ -42,7 +42,7 @@ pipeline {
         }
         stage('Cleanup') {
              agent {
-                docker { image 'node:14-alpine' }
+                docker { image 'node' }
             }
             steps {
                 sh 'node --version'
