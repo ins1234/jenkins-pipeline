@@ -11,13 +11,15 @@ pipeline {
             args '-v /var/run/docker.sock:/var/run/docker.sock'
         }
     }
+	environment {
+      PATH = "/bin:/usr/bin:$PATH"
+    }
     options {
         skipStagesAfterUnstable()
     }
     stages {
         stage("Build"){
             steps {
-			    "env.PATH=${dockerHome}/bin:${mavenHome}/bin:${env.PATH}:/bin:/usr/bin"
                 sh 'npm install'
             }
         }
