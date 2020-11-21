@@ -19,16 +19,19 @@ pipeline {
     }
     stages {
         stage("Build"){
+		     agent { docker 'node' } 
             steps {
                 sh 'npm install'
             }
         }
         stage("Test"){
+			agent { docker 'node' } 
             steps {
                 sh 'npm test'
             }
         }
         stage("Build & Push Docker image") {
+		    agent { docker 'alpine' }
             steps {
 				sh "echo 'Build & Push Docker image'"
                 //sh 'docker image build -t $registry:$BUILD_NUMBER .'
@@ -38,6 +41,7 @@ pipeline {
             }
         }
         stage('Deploy and smoke test') {
+		    agent { docker 'alpine' }
             steps{
                 sh "echo 'Deploy and smoke test'" //'./jenkins/scripts/deploy.sh'
             }
