@@ -6,6 +6,10 @@ pipeline {
     }
 	agent any
 	
+	tools {
+        docker 'my-docker' 
+    }
+	
     /*agent {
         docker {
             image 'gnschenker/jenkins-node-sample'
