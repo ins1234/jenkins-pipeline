@@ -3,6 +3,7 @@ pipeline {
         registry = "ins1234/jenkins-docker-test"
         DOCKER_PWD = "pass12345" //credentials('docker-login-pwd')
 		PATH = "/bin:/usr/bin:$PATH"
+		HOME = "/home/ins1234"
     }
 	agent any
 	
@@ -48,10 +49,8 @@ pipeline {
         }
         stage('Cleanup') {
 				steps {
-				    script {
-					   docker version
+					   docker image build -t -t $registry:$BUILD_NUMBER .
 					   echo 'Hello, Maven'
-					}										
 				}
 		  }
     }
