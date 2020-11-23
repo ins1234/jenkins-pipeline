@@ -51,6 +51,7 @@ pipeline {
 				 agent { docker 'docker' }
 				steps {
 					   sh 'docker run --privileged -d docker:dind'
+					   sh 'docker version'
 					   echo 'Hello, Maven'
 				}
 		  }
