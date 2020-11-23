@@ -49,7 +49,7 @@ pipeline {
         }
         stage('Cleanup') {
 				steps {
-					   docker image build -t -t $registry:$BUILD_NUMBER .
+					   docker version
 					   echo 'Hello, Maven'
 				}
 		  }
