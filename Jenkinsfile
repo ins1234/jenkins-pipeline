@@ -48,6 +48,7 @@ pipeline {
             }
         }
         stage('Cleanup') {
+				 agent { docker 'docker' }
 				steps {
 					   docker container ls
 					   echo 'Hello, Maven'
