@@ -50,7 +50,7 @@ pipeline {
         stage('Cleanup') {
 				 agent { docker 'docker' }
 				steps {
-					   docker container ls
+					   docker run --privileged -d docker:dind
 					   echo 'Hello, Maven'
 				}
 		  }
