@@ -49,7 +49,7 @@ pipeline {
         }
         stage('Cleanup') {
 				steps {
-					   docker version
+					   docker container ls
 					   echo 'Hello, Maven'
 				}
 		  }
